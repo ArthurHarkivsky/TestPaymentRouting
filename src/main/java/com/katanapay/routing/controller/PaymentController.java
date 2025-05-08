@@ -25,12 +25,13 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/payments")
+@RequestMapping("/api/v1/payments")
 @Tag(name = "Payment API", description = "API for payment processing and routing")
 public class PaymentController {
 
     private final PaymentService paymentService;
 
+    @PostMapping
     @Operation(summary = "Initiate a new payment", description = "Creates a new payment and routes it to the appropriate provider")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Payment initiated successfully",
@@ -38,20 +39,19 @@ public class PaymentController {
             @ApiResponse(responseCode = "400", description = "Invalid request"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
-    @PostMapping
     public ResponseEntity<PaymentResponse> initiatePayment(
             @Valid @RequestBody PaymentRequest request) {
         PaymentResponse response = paymentService.processPayment(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @GetMapping("/{id}")
     @Operation(summary = "Get payment details", description = "Retrieves payment details by ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Payment found",
                     content = @Content(schema = @Schema(implementation = PaymentResponse.class))),
             @ApiResponse(responseCode = "404", description = "Payment not found")
     })
-    @GetMapping("/{id}")
     public ResponseEntity<PaymentResponse> getPayment(
             @Parameter(description = "Payment ID", required = true) @PathVariable UUID id) {
         return ResponseEntity.ok(paymentService.getPayment(id));

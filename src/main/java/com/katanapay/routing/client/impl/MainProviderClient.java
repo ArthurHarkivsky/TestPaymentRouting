@@ -14,12 +14,12 @@ import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.CircuitBreaker;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
-import java.util.UUID;
 
 /**
  * Implementation of the provider client interface.
@@ -36,11 +36,10 @@ public class MainProviderClient implements ProviderClient {
      * {@inheritDoc}
      */
     @Override
-    @Retryable(
-            retryFor = {ResourceAccessException.class},
-            backoff = @Backoff(delay = 1000, multiplier = 2)
-    )
     @CircuitBreaker
+    @Retryable(
+            retryFor = {ResourceAccessException.class, HttpServerErrorException.class},
+            backoff = @Backoff(delay = 1000, multiplier = 2))
     public ProviderPaymentResponse sendPaymentRequest(String endpoint, ProviderPaymentRequest request) {
         log.debug("Sending payment request to endpoint: {} for payment: {}", endpoint, request.getPaymentId());
 
@@ -54,7 +53,6 @@ public class MainProviderClient implements ProviderClient {
         HttpEntity<ProviderPaymentRequest> entity = new HttpEntity<>(request, headers);
 
         try {
-            // In a mock environment, this would call a stub/mock endpoint
             ResponseEntity<ProviderPaymentResponse> response = restTemplate.postForEntity(
                     endpoint,
                     entity,
@@ -74,10 +72,11 @@ public class MainProviderClient implements ProviderClient {
             log.error("Provider API returned error status: {} for payment: {}",
                     e.getStatusCode(), request.getPaymentId());
 
-            // For the purpose of this example, simulate a successful response with COMPLETED status
-            // In a real implementation, handle different error codes appropriately
             if (e.getStatusCode().is4xxClientError()) {
-                return simulateFallbackResponse(request.getPaymentId(), "FAILED");
+                return simulateFallbackResponse(request.getPaymentId().toString(), "FAILED");
+            } else if (e.getStatusCode().is5xxServerError()) {
+                throw new HttpServerErrorException(e.getStatusCode(),
+                        "Provider API server error: " + e.getStatusCode());
             } else {
                 throw new ProviderException("Provider API error: " + e.getMessage(), e);
             }
@@ -97,7 +96,8 @@ public class MainProviderClient implements ProviderClient {
      * @param status    the status to return
      * @return a simulated provider response
      */
-    private ProviderPaymentResponse simulateFallbackResponse(UUID paymentId, String status) {
+    @SuppressWarnings("SameParameterValue")
+    private ProviderPaymentResponse simulateFallbackResponse(String paymentId, String status) {
         return ProviderPaymentResponse.builder()
                 .paymentId(paymentId)
                 .status(status)
