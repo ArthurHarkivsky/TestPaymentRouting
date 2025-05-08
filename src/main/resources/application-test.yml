@@ -8,7 +8,6 @@ spring:
       ddl-auto: validate
 
 provider:
-  timeout: 500
   retry:
     max-attempts: 2
   endpoints:

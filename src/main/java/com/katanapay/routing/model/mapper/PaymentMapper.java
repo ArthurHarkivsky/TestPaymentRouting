@@ -1,8 +1,8 @@
 package com.katanapay.routing.model.mapper;
 
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.model.dto.PaymentResponse;
-import com.katanapay.routing.model.dto.ProviderPaymentRequest;
+import com.katanapay.routing.dto.PaymentRequest;
+import com.katanapay.routing.dto.PaymentResponse;
+import com.katanapay.routing.dto.ProviderPaymentRequest;
 import com.katanapay.routing.model.entity.Payment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

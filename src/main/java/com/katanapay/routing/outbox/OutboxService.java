@@ -20,6 +20,7 @@ public interface OutboxService {
      * @param payload       the JSON payload of the event
      * @return the created outbox event
      */
+    @SuppressWarnings("UnusedReturnValue")
     OutboxEvent createOutboxEvent(String aggregateType, String aggregateId, String eventType, String payload);
 
     /**
@@ -38,7 +39,7 @@ public interface OutboxService {
     void markAsProcessed(UUID id);
 
     /**
-     * Updates the attempt count for an outbox event.
+     * Updates the attempts count for an outbox event.
      *
      * @param id           the ID of the outbox event
      * @param attemptCount the new attempt count

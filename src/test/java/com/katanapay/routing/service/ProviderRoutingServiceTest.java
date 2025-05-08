@@ -1,7 +1,6 @@
 package com.katanapay.routing.service;
 
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.service.main.MainProviderRoutingService;
+import com.katanapay.routing.dto.PaymentRequest;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

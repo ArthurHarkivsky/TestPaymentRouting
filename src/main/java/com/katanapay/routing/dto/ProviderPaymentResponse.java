@@ -1,4 +1,4 @@
-package com.katanapay.routing.model.dto;
+package com.katanapay.routing.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

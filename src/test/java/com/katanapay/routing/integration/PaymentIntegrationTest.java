@@ -2,8 +2,8 @@ package com.katanapay.routing.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.model.dto.PaymentResponse;
+import com.katanapay.routing.dto.PaymentRequest;
+import com.katanapay.routing.dto.PaymentResponse;
 import com.katanapay.routing.model.entity.Payment;
 import com.katanapay.routing.repository.PaymentRepository;
 import org.junit.jupiter.api.BeforeEach;

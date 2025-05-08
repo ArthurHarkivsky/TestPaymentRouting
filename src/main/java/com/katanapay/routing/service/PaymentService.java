@@ -1,7 +1,7 @@
 package com.katanapay.routing.service;
 
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.model.dto.PaymentResponse;
+import com.katanapay.routing.dto.PaymentRequest;
+import com.katanapay.routing.dto.PaymentResponse;
 
 import java.util.UUID;
 
@@ -35,5 +35,7 @@ public interface PaymentService {
      * @param status            the new status
      * @return the updated payment details
      */
+    // todo use in API
+    @SuppressWarnings("unused")
     PaymentResponse updatePaymentStatus(UUID paymentId, String providerReference, String status);
 }

@@ -1,7 +1,6 @@
-package com.katanapay.routing.outbox.impl;
+package com.katanapay.routing.outbox;
 
 import com.katanapay.routing.model.entity.OutboxEvent;
-import com.katanapay.routing.outbox.OutboxService;
 import com.katanapay.routing.repository.OutboxEventRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

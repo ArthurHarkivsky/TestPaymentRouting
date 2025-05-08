@@ -1,10 +1,9 @@
-package com.katanapay.routing.provider.impl;
+package com.katanapay.routing.provider;
 
 import com.katanapay.routing.client.ProviderClient;
 import com.katanapay.routing.exception.ProviderException;
-import com.katanapay.routing.model.dto.ProviderPaymentRequest;
-import com.katanapay.routing.model.dto.ProviderPaymentResponse;
-import com.katanapay.routing.provider.PaymentProvider;
+import com.katanapay.routing.dto.ProviderPaymentRequest;
+import com.katanapay.routing.dto.ProviderPaymentResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * Implementation of Provider B payment processor.
+ * Implementation of the Provider B payment processor.
  */
 @Slf4j
 @Component
@@ -79,7 +78,7 @@ public class ProviderB implements PaymentProvider {
                 .currency(request.getCurrency())
                 .build();
 
-        // Provider B expects amount in cents (multiply by 100)
+        // Provider B expects the amount in cents (multiply by 100)
         if (request.getAmount() != null) {
             BigDecimal amountInCents = request.getAmount()
                     .multiply(new BigDecimal("100"))

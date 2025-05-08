@@ -1,7 +1,7 @@
 package com.katanapay.routing.controller;
 
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.model.dto.PaymentResponse;
+import com.katanapay.routing.dto.PaymentRequest;
+import com.katanapay.routing.dto.PaymentResponse;
 import com.katanapay.routing.service.PaymentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

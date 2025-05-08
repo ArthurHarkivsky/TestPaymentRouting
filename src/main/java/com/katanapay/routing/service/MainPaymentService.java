@@ -1,15 +1,13 @@
-package com.katanapay.routing.service.main;
+package com.katanapay.routing.service;
 
 import com.katanapay.routing.exception.RoutingException;
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.model.dto.PaymentResponse;
-import com.katanapay.routing.model.dto.ProviderPaymentResponse;
+import com.katanapay.routing.dto.PaymentRequest;
+import com.katanapay.routing.dto.PaymentResponse;
+import com.katanapay.routing.dto.ProviderPaymentResponse;
 import com.katanapay.routing.model.entity.Payment;
 import com.katanapay.routing.model.mapper.PaymentMapper;
 import com.katanapay.routing.outbox.OutboxService;
 import com.katanapay.routing.repository.PaymentRepository;
-import com.katanapay.routing.service.PaymentService;
-import com.katanapay.routing.service.ProviderRoutingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
 
-    <changeSet id="1.0.0" author="katanapay">
+    <changeSet id="1.0.0" author="ArthurHarkivsky">
         <createTable tableName="payments">
             <column name="id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>

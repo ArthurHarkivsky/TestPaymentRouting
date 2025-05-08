@@ -1,7 +1,7 @@
 package com.katanapay.routing.service;
 
-import com.katanapay.routing.model.dto.PaymentRequest;
-import com.katanapay.routing.model.dto.ProviderPaymentResponse;
+import com.katanapay.routing.dto.PaymentRequest;
+import com.katanapay.routing.dto.ProviderPaymentResponse;
 import com.katanapay.routing.model.entity.Payment;
 
 /**

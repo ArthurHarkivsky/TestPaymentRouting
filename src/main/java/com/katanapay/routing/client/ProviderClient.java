@@ -1,7 +1,7 @@
 package com.katanapay.routing.client;
 
-import com.katanapay.routing.model.dto.ProviderPaymentRequest;
-import com.katanapay.routing.model.dto.ProviderPaymentResponse;
+import com.katanapay.routing.dto.ProviderPaymentRequest;
+import com.katanapay.routing.dto.ProviderPaymentResponse;
 
 /**
  * Interface for external payment provider API clients.

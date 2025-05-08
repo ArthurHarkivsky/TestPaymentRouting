@@ -1,4 +1,4 @@
-package com.katanapay.routing.model.dto;
+package com.katanapay.routing.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;

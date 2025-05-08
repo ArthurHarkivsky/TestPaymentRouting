@@ -2,7 +2,7 @@ package com.katanapay.routing.performance;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.client.WireMock;
-import com.katanapay.routing.model.dto.PaymentRequest;
+import com.katanapay.routing.dto.PaymentRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;

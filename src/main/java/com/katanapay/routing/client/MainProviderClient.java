@@ -1,9 +1,8 @@
-package com.katanapay.routing.client.impl;
+package com.katanapay.routing.client;
 
-import com.katanapay.routing.client.ProviderClient;
 import com.katanapay.routing.exception.ProviderException;
-import com.katanapay.routing.model.dto.ProviderPaymentRequest;
-import com.katanapay.routing.model.dto.ProviderPaymentResponse;
+import com.katanapay.routing.dto.ProviderPaymentRequest;
+import com.katanapay.routing.dto.ProviderPaymentResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
