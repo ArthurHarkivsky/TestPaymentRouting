@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: katana-pay-postgres
+    ports:
+      - "5800:5432"
+    environment:
+      POSTGRES_DB: katana_pay
+      POSTGRES_USER: katana_pay
+      POSTGRES_PASSWORD: katana_pay
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U katana_pay"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

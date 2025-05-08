@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+provider:
+  timeout: 500
+  retry:
+    max-attempts: 2
+  endpoints:
+    provider-a: http://localhost:${wiremock.server.port}/api/v1/providerA/payments
+    provider-b: http://localhost:${wiremock.server.port}/api/v1/providerB/payments
