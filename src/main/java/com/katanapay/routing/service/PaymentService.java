@@ -35,7 +35,7 @@ public interface PaymentService {
      * @param status            the new status
      * @return the updated payment details
      */
-    // todo use in API
+    // !!! todo with June 8, 2025 end-date: use in API
     @SuppressWarnings("unused")
     PaymentResponse updatePaymentStatus(UUID paymentId, String providerReference, String status);
 }

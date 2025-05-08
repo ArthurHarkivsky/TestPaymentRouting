@@ -43,7 +43,7 @@ public class MainProviderRoutingService implements ProviderRoutingService {
      * - For other currencies over equivalent of $1000: Use Provider A
      * - Default: Use Provider A
      */
-    @Override
+    @Override // todo with May 8, 2026 end-date: refactor determineProvider FOR SURE in case of absence of high-priority tasks in real project!!!
     public String determineProvider(PaymentRequest paymentRequest) {
         log.debug("Determining provider for payment request: {}", paymentRequest);
 

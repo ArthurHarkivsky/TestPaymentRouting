@@ -74,7 +74,7 @@ public class MainOutboxService implements OutboxService {
     @Transactional
     public boolean acquireLock(UUID id) {
         LocalDateTime now = LocalDateTime.now();
-        LocalDateTime lockExpiry = now.plusMinutes(5); // todo move to props
+        LocalDateTime lockExpiry = now.plusMinutes(5); // todo with May 8, 2026 end-date: move to props
 
         int updatedRows = outboxEventRepository.acquireLock(id, lockExpiry, now);
 
