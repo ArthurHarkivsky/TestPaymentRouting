@@ -1,5 +1,5 @@
 # KatanaPay Payment Routing System
-
+# ● ● ● ● ● RAW SOLUTION ● ● ● ● ●
 ## Routing Logic Structure
 
 I did not use deeper knowledge of payments, etc. here due to the time limit in your PDF-file.
